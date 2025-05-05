@@ -4,17 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Construyendo el proyecto...'
+                echo 'Instalando dependencias...'
+                sh 'pip install -r requirements.txt'  // Agrega tus dependencias
             }
         }
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas básicas...'
+                sh 'pytest'  // Ejecuta las pruebas automáticas
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Desplegando el proyecto...'
+                // Aquí puedes agregar comandos de despliegue (ej: AWS, Heroku, etc.)
             }
         }
     }
