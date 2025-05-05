@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Instalando dependencias...'
-                sh 'pip install -r requirements.txt'  // Agrega tus dependencias
+                bat 'pip install -r requirements.txt'  // Instalar dependencias en Windows
             }
         }
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas básicas...'
-                sh 'pytest'  // Ejecuta las pruebas automáticas
+                bat 'pytest'  // Ejecuta las pruebas en Windows
             }
         }
         stage('Deploy') {
