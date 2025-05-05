@@ -5,13 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Instalando dependencias...'
-                bat 'pip install -r requirements.txt'  // Instalar dependencias en Windows
+                bat 'python -m venv venv'  // Crea un entorno virtual
+                bat 'venv\\Scripts\\activate && pip install -r requirements.txt'  // Activa el entorno virtual y instala las dependencias
             }
         }
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas básicas...'
-                bat 'pytest'  // Ejecuta las pruebas en Windows
+                bat 'venv\\Scripts\\activate && pytest'  // Ejecuta las pruebas dentro del entorno virtual
             }
         }
         stage('Deploy') {
